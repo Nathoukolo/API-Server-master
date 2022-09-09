@@ -16,7 +16,10 @@ module.exports =
         }
         else{
             if(this.HttpContext.path.params.op){
-
+                if(this.HttpContext.path.params.op == ' '){
+                    this.HttpContext.params.value = parseInt(HttpContext.params.x + HttpContext.params.y)
+                    this.HttpContext.response.JSON(this.HttpContext.params.value);
+                }
             }
             else{
                 this.HttpContext.path.params.error = "parameter 'op' is missing";
