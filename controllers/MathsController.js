@@ -17,8 +17,12 @@ module.exports =
         else{
             if(this.HttpContext.path.params.op){
                 if(this.HttpContext.path.params.op == ' '){
-                    this.HttpContext.params.value = parseInt(HttpContext.params.x + HttpContext.params.y)
-                    this.HttpContext.response.JSON(this.HttpContext.params.value);
+                    this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) + parseInt(this.HttpContext.path.params.y);
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);
+                }
+                else if(this.HttpContext.path.params.op == '-'){
+                    this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) - parseInt(this.HttpContext.path.params.y);
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);
                 }
             }
             else{
@@ -28,4 +32,4 @@ module.exports =
 
         }
     }
-    }
+}
